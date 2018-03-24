@@ -1,4 +1,4 @@
-there are two to get data form input fiels :
+there are two way to get data form input fiels :
 
 with control element (here using state) and uncontrol element .
 
