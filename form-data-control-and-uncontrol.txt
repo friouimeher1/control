@@ -1,0 +1,81 @@
+there are two to get data form input fiels :
+
+with control element (here using state) and uncontrol element .
+
+uncontrol element : in react mean without set Value and without onChange event 
+                    mean react don't control this element .
+
+                    exemple :
+                    when you use arraw function you don't ned to binf this function
+                    onSubmitForm=(e)=>{
+                      e.preventDefaul();
+                      console.log({
+                        title:this.title.value
+                      })
+                    }
+                    <form onSubmit={this.onSubmitForm}>
+                    <input 
+                         type="text" 
+                          placeholder="put anything here"
+                          ref={input =>this.title=input}
+                    />
+                    </form>
+
+                    if you want to add a default value just specify a defalut value
+                    in the input element
+                    by this defaultValue :you make your elemrnt control
+                    to handle uncontrol element you must using for exemple jquery but how ?
+
+                    first you get element by reference and then get value from there
+
+control element :
+                  has onChange event handler wchich save data component in state
+                  and value also set 
+
+                  exemple :
+                             <form onSubmit={this.onSubmitForm}>
+                                <input 
+                                    type="text" 
+                                      placeholder="put anything here"
+                                      value={this.state.title}
+                                      onChange={this.changeValueHandler}
+                                />
+                            </form>
+                  here you need to define a default state of the title
+                  after that you need to setState of this element .
+
+                  on constructor :
+
+                  this.state={
+                    title='somethning here'
+                  }
+
+                  changeValueHandler(e)=>{
+                    e.preventDefaul
+                    this.setState({
+                      title:e.target.value
+                    })
+                  }
+if you have a lot of input form for each form you need to add a function that handle
+the value here are a big adavantage to use one function and use it for a all 
+input form .but in this form you need to specify the name of input element
+
+
+                                  <input 
+                                    type="text" 
+                                      placeholder="put anything here"
+                                      value={this.state.title}
+                                      onChange={this.changeHandler}
+                                />
+                                 <input 
+                                    type="text" 
+                                      placeholder="put anything here"
+                                      value={this.state.age}
+                                      onChange={this.changeHandler}
+                                />
+
+                                changeHandler(e)=>{
+                                  this.setState({
+                                    [e..target.name]=e.target.value
+                                  })
+                                }
